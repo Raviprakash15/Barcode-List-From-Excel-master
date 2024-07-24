@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a simple barcode builder from your excel sheet.">
+    <meta name="keywords" content="barcode, barcode builder, excel, sheet">
+    <meta name="author" content="KyriakosGian">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BarCode List from Excel</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<div id="header">
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1 class="display-3"><a class="btn btn-link text-secondary p-0" href="" title="Barcode">
+                <span><img id="logo" src="assets/images/scan.svg" alt="Link" width="80" height="80"></span>
+            </a>BarCode List from Excel</h1>
+            <p class="lead">This is a simple barcode builder from your Excel sheet.</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div id="forms" class="rounded shadow p-5 bg-white">
+        <h2 class="pb-2 border-bottom">Follow the steps</h2>
+        <div class="row">
+            <div class="col-md-3 mb-3 mb-md-0 text-center">
+                <i class="ti-paint-bucket text-primary h1"></i>
+                <h3 class="mt-4 text-capitalize h5"><i class="bi bi-1-square"></i> Select your excel workbook</h3>
+                <p class="regular text-muted"></p>
+                <form id="fileForm" enctype="multipart/form-data">
+                    <fieldset class="form-group">
+                        <div class="form-group">
+                            <input id="uploadedFile" class="uploadedFile form-control-file" type=file name="file" accept=".xls,.xlsx" aria-describedby="fileHelp">
+                            <small id="fileHelp" class="form-text text-muted">Select your Excel workbook from your folder.</small>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-md-3 mb-3 mb-md-0 text-center">
+                <i class="ti-shine text-primary h1"></i>
+                <h3 class="mt-4 text-capitalize h5"><i class="bi bi-2-square"></i> Name the list</h3>
+                <p class="regular text-muted">Name your work list<br>(Optional)</p>
+                <div class="form-group">
+                    <label for="inputTitle"></label><input id="inputTitle" class="form-control form-control-lg" type="text" placeholder="Title">
+                </div>
+            </div>
+            <div class="col-md-3 mb-3 mb-md-0 text-center">
+                <i class="ti-shine text-primary h1"></i>
+                <h3 class="mt-4 text-capitalize h5"><i class="bi bi-3-square"></i> BarCode Height</h3>
+                <p class="regular text-muted">Select BarCode Height<br>(Optional)</p>
+                <div class="form-group">
+                    <div class="custom-controls-stacked">
+                        <label class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="height" value="15" onchange="SetBarcodeHeight(this.value)">
+                            <div class="custom-control-label">15px</div>
+                        </label>
+                        <label class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="height" value="35" onchange="SetBarcodeHeight(this.value)" checked>
+                            <div class="custom-control-label">35px</div>
+                        </label>
+                        <label class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="height" value="100" onchange="SetBarcodeHeight(this.value)">
+                            <div class="custom-control-label">100px</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3 mb-md-0 text-center">
+                <i class="ti-thought text-primary h1"></i>
+                <h3 class="mt-4 text-capitalize h5 "><i class="bi bi-4-square"></i> Print</h3>
+                <p class="regular text-muted">After workbook is loaded click on print button.</p>
+                <button type="button" class="btn btn-primary btn-lg btn-lg-bg" onclick="window.print();">Print</button>
+            </div>
+        </div>
+    </div>
+    <hr id="noprint">
+    <div class="results">
+        <div id="grid">
+            <div class="title text-center">
+                <h1 id="printTitle" class="printTitle"></h1>
+            </div>
+            <div class="table-responsive">
+                <table id="excelDataTable" class="table table-bordered"></table>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/xlsx.full.min.js"></script>
+<script src="assets/js/JsBarcode.all.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
