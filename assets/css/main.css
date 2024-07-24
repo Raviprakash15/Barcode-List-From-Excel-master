@@ -81,3 +81,7 @@ td {
     text-align: center;
     vertical-align: middle !important;
 }
+.display-3 {
+    text-align: center;
+    color: rgb(54, 12, 220);
+  }
